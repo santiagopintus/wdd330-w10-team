@@ -1,4 +1,4 @@
-const getJSON = async (url) => {
+/* const getJSON = async (url) => {
   return fetch(url)
     .then((res) => {
       if (!res.ok) {
@@ -9,7 +9,21 @@ const getJSON = async (url) => {
     })
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
-};
+}; */
+
+function getJSON(url) {
+  return fetch(url)
+      .then(function(response) {
+          if (!response.ok) {
+              throw Error(response.statusText);
+          } else {
+              return response.json();
+          }
+      })
+      .catch(function(error) {
+          console.log(error);
+      });
+}
 
 const getLocation = (options) => {
   return new Promise((res, rej) => {
